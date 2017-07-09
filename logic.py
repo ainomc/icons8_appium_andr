@@ -4,7 +4,7 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-
+from selenium.common.exceptions import WebDriverException
 
 class LogicClick(object):
     """Click logic of tests"""
@@ -14,29 +14,38 @@ class LogicClick(object):
 
     def click_xpath(self, xpath):
         """Click xpath"""
+        element = self.driver.find_element_by_xpath(xpath)
+        self.driver.execute_script("arguments[0].scrollIntoView();", element)
+
         try:
             WebDriverWait(self.driver, 1)\
                 .until(EC.element_to_be_clickable((By.XPATH, xpath))).click()
         except:
-            self.driver.find_element_by_xpath(xpath).click()
+            self.driver.element.click()
 
     def click_text(self, link):
         """Click text"""
+        element = self.driver.find_element_by_xpath('//*[text()="%s"]' % link)
+        self.driver.execute_script("arguments[0].scrollIntoView();", element)
+
         try:
             WebDriverWait(self.driver, 1)\
                 .until(EC.element_to_be_clickable(
                     (By.XPATH, '//*[text()="%s"]' % link))).click()
         except:
-            self.driver.find_element_by_xpath('//*[text()="%s"]' % link).click()
+            self.driver.element.click()
 
     def click_part_text(self, link):
         """Click contains text"""
+        element = self.driver.find_element_by_xpath('.//*[contains(text(), "%s")]' % link)
+        self.driver.execute_script("arguments[0].scrollIntoView();", element)
+
         try:
             WebDriverWait(self.driver, 1)\
                 .until(EC.element_to_be_clickable(
                     (By.XPATH, './/*[contains(text(), "%s")]' % link))).click()
         except:
-            self.driver.find_element_by_xpath('.//*[contains(text(), "%s")]' % link).click()
+            self.driver.element.click()
 
 
 class LogicLocate(object):

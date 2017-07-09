@@ -6,10 +6,12 @@ from appium import webdriver
 from logic import LogicClick
 from logic import LogicLocate
 from logic import LogicHelper
+from locators import *
 
 
 class ContextMain(object):
     """Main class with fixtures"""
+
 
     def setup_class(cls):
         """Actions before tests"""
@@ -32,10 +34,20 @@ class ContextMain(object):
         """Actions after tests"""
         cls.driver.quit()
 
-    def setup(self):
+
+    @pytest.fixture
+    def open_url(self):
         """Actions before each test"""
         self.driver.get('https://demo.icons8.com/')
 
-    def teardown(self):
-        """Actions after each tests"""
-        pass
+    @pytest.fixture
+    def open_icons(self):
+        self.driver.get('https://demo.icons8.com/')
+        self.click.click_xpath(menu_toggle)
+        self.click.click_text('Icons')
+
+    @pytest.fixture
+    def open_request(self):
+        self.driver.get('https://demo.icons8.com/')
+        self.click.click_xpath(menu_toggle)
+        self.click.click_text('Request')
