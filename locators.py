@@ -30,4 +30,7 @@ hot_ideas = './/*[@class="c-tabs m-nostick"]/*[1]'
 latest_ideas = './/*[@class="c-tabs m-nostick"]/*[2]'
 popular_ideas = './/*[@class="c-tabs m-nostick"]/*[3]'
 
+# Buy Page
+video_in_buy_page = './/img[@alt="Icons8 Paid Features"]'
+
 

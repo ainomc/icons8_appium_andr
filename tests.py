@@ -168,51 +168,47 @@ class TestHomePage(ContextMain):
 class TestMainMenu(ContextMain):
     """Main menu tests class"""
 
-    def test_open_Icons_from_menu(self, open_url):
+    def test_open_Icons_from_menu(self, open_menu_toggle):
         """Open Icons from left side menu"""
-        self.click.click_xpath(menu_toggle)
         self.click.click_text('Icons')
         self.locate.locate_text("New Icons")
 
-    def test_open_Request_from_menu(self, open_url):
+    def test_open_Request_from_menu(self, open_menu_toggle):
         """Open Request from left side menu"""
-        self.click.click_xpath(menu_toggle)
         self.click.click_text('Request')
         self.locate.locate_text("Request Icons")
         
-    def test_open_Buy_from_menu(self, open_url):
+    def test_open_Buy_from_menu(self, open_menu_toggle):
         """Open Buy from left side menu"""
-        self.click.click_xpath(menu_toggle)
         self.click.click_text('Buy')
         self.locate.locate_text("Paid or Free, You Are Our Hero!")
 
-    def test_open_Icon_Search_AI_from_menu(self, open_url):
+    def test_presents_imassage_stickers_in_menu(self, open_menu_toggle):
         """Open Search from left side menu"""
-        self.click.click_xpath(menu_toggle)
-        self.click.click_text('Buy')
-        self.locate.locate_text("Icon Search AI")
+        self.locate.locate_text('iMessage Stickers')
 
-    def test_open_Blog_from_menu(self, open_url):
+    def test_open_Icon_Search_AI_from_menu(self, open_menu_toggle):
+        """Open Search from left side menu"""
+        self.click.click_text('Icon Search AI')
+        self.locate.locate_text("Draw an icon (Rough is OK):")
+
+    def test_open_Blog_from_menu(self, open_menu_toggle):
         """Open Blog from left side menu"""
-        self.click.click_xpath(menu_toggle)
         self.click.click_text('Blog')
         self.locate.locate_xpath(blog_list_news)
 
-    def test_open_Register_from_menu(self, open_url):
+    def test_open_Register_from_menu(self, open_menu_toggle):
         """Open Register from left side menu"""
-        self.click.click_xpath(menu_toggle)
         self.click.click_part_text('Register')
         self.locate.locate_part_text('Register at Icons8')
 
-    def test_open_Login_from_menu(self, open_url):
+    def test_open_Login_from_menu(self, open_menu_toggle):
         """Open Login from left side menu"""
-        self.click.click_xpath(menu_toggle)
         self.click.click_part_text('Login')
         self.locate.locate_text('Login to Icons8')
         
-    def test_open_lang_menu_from_menu(self, open_url):
+    def test_open_lang_menu_from_menu(self, open_menu_toggle):
         """Open Language menu from left side menu"""
-        self.click.click_xpath(menu_toggle)
         self.click.click_xpath(lang_menu)
         self.locate.locate_part_text('Chinese')
         self.locate.locate_part_text('Spanish')
@@ -223,21 +219,21 @@ class TestMainMenu(ContextMain):
 class TestIconsPage(ContextMain):
     """Icon Page tests class"""
 
-    def test_presents_search_field(self, open_url, open_icons):
+    def test_presents_search_field(self, open_icons):
         """Check presents of search field"""
         self.locate.locate_xpath(icons_search_field)
 
-    def test_presents_icons_filters(self, open_url, open_icons):
+    def test_presents_icons_filters(self, open_icons):
         """Check presents of icons filter"""
         self.locate.locate_xpath(icons_filter_1)
         self.locate.locate_xpath(icons_filter_2)
         self.locate.locate_xpath(icons_filter_3)
 
-    def test_presents_icon_resuilt(self, open_url, open_icons):
+    def test_presents_icon_resuilt(self, open_icons):
         """Check presents of icon on the page"""
         self.locate.locate_xpath(icon_result)
 
-    def test_presents_category_menu(self, open_url, open_icons):
+    def test_presents_category_menu(self, open_icons):
         """Check presents of category menu"""
         self.click.click_xpath(category_menu)
         self.locate.locate_text('iOS 10')
@@ -248,31 +244,65 @@ class TestRequestPage(ContextMain):
     """Request Page tests class"""
 
 
-    def test_presents_fast_for_50(self, open_url, open_request):
-        """Check presents of search field"""
+    def test_presents_fast_for_50(self, open_request):
+        """Check "Fast for $50/icon" """
         self.click.click_text('Fast for $50/icon')
         self.locate.locate_text('How Fast Is It?')
         self.locate.locate_text('How Much Is It?')
         self.locate.locate_text('Where Do I Start?')
 
-    def test_presents_hot_ideas(self, open_url, open_request):
-        """Check presents of search field"""
+    def test_presents_hot_ideas(self, open_request):
+        """Check Hot Ideas list"""
         self.locate.locate_text('Hot Ideas')
         self.locate.locate_xpath(idea)
 
-    def test_presents_latest_ideas(self, open_url, open_request):
-        """Check presents of search field"""
+    def test_presents_latest_ideas(self, open_request):
+        """Check Hot Ideas list"""
         self.click.click_part_text('Latest Ideas')
         self.locate.locate_xpath(idea)
 
-    def test_presents_popular_ideas(self, open_url, open_request):
-        """Check presents of search field"""
+    def test_presents_popular_ideas(self, open_request):
+        """Check Popular Ideas list"""
         self.click.click_part_text('Popular Ideas')
         self.locate.locate_xpath(idea)
 
 
+class TestBuyPage(ContextMain):
+    """Buy Page tests class"""
 
 
+    def test_presents_unlimited_plan(self, open_buy):
+        """Check presents of Unlimited Plan"""
+        self.locate.locate_part_text('Unlimited Plan')
+        self.locate.locate_part_text('Buy for $19.90/month')
+
+    def test_presents_free_plan(self, open_buy):
+        """Check presents of Free plan"""
+        self.locate.locate_part_text('Free')
+        self.locate.locate_part_text('Try for Free')
+
+    def test_presents_service_integration_plan(self, open_buy):
+        """Check presents of Service Integration plan"""
+        self.locate.locate_part_text('Service Integration')
+        self.locate.locate_part_text('Starting from $100/month')
+
+    def test_presents_video_in_buy_page(self, open_buy):
+        """Check presents of video on buy page"""
+        self.locate.locate_xpath(video_in_buy_page)
+
+    def test_presents_info_text_in_buy_page(self, open_buy):
+        """Check presents of info text in buy page"""
+        self.locate.locate_part_text('Paid License Summary')
+        self.locate.locate_part_text('Standard License Agreement')
+        self.locate.locate_part_text('Permitted Uses')
+        self.locate.locate_part_text('Prohibited Uses for all Licenses')
+        self.locate.locate_part_text("What's Included")
+        self.locate.locate_part_text('All Plans Except PNG Cobra')
+        self.locate.locate_part_text('New Icons and Support')
+        self.locate.locate_part_text('Built-in Editing Tools')
+        self.locate.locate_part_text('Web App')
+        self.locate.locate_part_text('Icons8 App for Mac and Windows')
+        self.locate.locate_part_text('FAQ on Icons8 App')
 
 
 
