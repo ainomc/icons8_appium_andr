@@ -12,7 +12,7 @@ class LogicClick(object):
     def __init__(self, driver):
         self.driver = driver
 
-    def click_xpath(self, xpath):
+    def xpath(self, xpath):
         """Click xpath"""
         element = self.driver.find_element_by_xpath(xpath)
         self.driver.execute_script("arguments[0].scrollIntoView();", element)
@@ -23,7 +23,7 @@ class LogicClick(object):
         except:
             self.driver.element.click()
 
-    def click_text(self, link):
+    def text(self, link):
         """Click text"""
         element = self.driver.find_element_by_xpath('//*[text()="%s"]' % link)
         self.driver.execute_script("arguments[0].scrollIntoView();", element)
@@ -35,7 +35,7 @@ class LogicClick(object):
         except:
             self.driver.element.click()
 
-    def click_part_text(self, link):
+    def part_text(self, link):
         """Click contains text"""
         element = self.driver.find_element_by_xpath('.//*[contains(text(), "%s")]' % link)
         self.driver.execute_script("arguments[0].scrollIntoView();", element)
@@ -54,15 +54,15 @@ class LogicLocate(object):
     def __init__(self, driver):
         self.driver = driver
 
-    def locate_xpath(self, xpath):
+    def xpath(self, xpath):
         """Check locate of xpath"""
         self.driver.find_element_by_xpath(xpath)
 
-    def locate_text(self, text):
+    def text(self, text):
         """Check locate of text"""
         self.driver.find_element_by_xpath('.//*[text()="%s"]' % text)
 
-    def locate_part_text(self, text):
+    def part_text(self, text):
         """Check locate of contains text"""
         self.driver.find_element_by_xpath('.//*[contains(text(), "%s")]' % text)
 

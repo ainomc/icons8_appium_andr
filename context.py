@@ -43,22 +43,22 @@ class ContextMain(object):
     @pytest.fixture
     def open_menu_toggle(self):
         self.driver.get('https://demo.icons8.com/')
-        self.click.click_xpath(menu_toggle)
+        self.click.xpath(menu_toggle)
 
     @pytest.fixture
     def open_icons(self):
         self.driver.get('https://demo.icons8.com/')
-        self.click.click_xpath(menu_toggle)
-        self.click.click_text('Icons')
+        self.click.xpath(menu_toggle)
+        self.click.text('Icons')
 
     @pytest.fixture
     def open_request(self):
         self.driver.get('https://demo.icons8.com/')
-        self.click.click_xpath(menu_toggle)
-        self.click.click_text('Request')
+        self.click.xpath(menu_toggle)
+        self.click.text('Request')
 
     @pytest.fixture
     def open_buy(self):
         self.driver.get('https://demo.icons8.com/')
-        self.click.click_xpath(menu_toggle)
-        self.click.click_text('Buy')
+        self.click.xpath(menu_toggle)
+        self.click.text('Buy')
