@@ -3,10 +3,10 @@
 
 import pytest
 from appium import webdriver
-from logic import LogicClick
-from logic import LogicLocate
-from logic import LogicHelper
-from locators import *
+from logic.logic_base import LogicClick
+from logic.logic_base import LogicLocate
+from logic.logic_base import LogicHelper
+from locators.locators_base import *
 
 
 class ContextMain(object):
