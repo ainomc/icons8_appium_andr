@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*
-"""Request pagetests"""
+"""Request page tests"""
 
 from context.context_base import ContextMain
 from locators.locators_base import *

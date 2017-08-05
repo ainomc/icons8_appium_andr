@@ -5,7 +5,6 @@ from context.context_base import ContextMain
 from locators.locators_base import *
 
 
-
 class TestHomePage(ContextMain):
     """Home page tests"""
 
